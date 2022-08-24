@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterfire_auth_bloc_georgeta/blocs/auth/auth_bloc.dart';
 import 'package:flutterfire_auth_bloc_georgeta/components/buttons/email_sign_in_button.dart';
 import 'package:flutterfire_auth_bloc_georgeta/components/buttons/google_auth_button.dart';
 import 'package:flutterfire_auth_bloc_georgeta/components/buttons/label_button.dart';
@@ -32,7 +34,10 @@ class LoginScreen extends StatelessWidget {
                   height: 24,
                 ),
                 GoogleSignInButton(
-                    text: 'Iniciar sesión con Google', onPressed: () {}),
+                    text: 'Iniciar sesión con Google',
+                    onPressed: () {
+                      context.read<AuthBloc>().add(AuthGoogleSignInEvent());
+                    }),
                 const SizedBox(
                   height: 24,
                 ),
